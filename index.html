@@ -6,17 +6,16 @@
     <title>Be My Valentine?</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
-        /* --- Main Layout --- */
         body {
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Changed to min-height for better mobile view */
-            background-color: #ffeef2; /* Light pink base */
+            min-height: 100vh;
+            background-color: #ffeef2;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden; /* Prevents scrollbars from moving hearts */
+            overflow: hidden;
             text-align: center;
             position: relative;
         }
@@ -25,7 +24,7 @@
             max-width: 600px;
             padding: 20px;
             position: relative;
-            z-index: 10; /* Ensure text and buttons are above background hearts */
+            z-index: 10;
         }
 
         h1 {
@@ -35,11 +34,10 @@
             text-shadow: 2px 2px #ffc1e3;
         }
 
-        /* --- Buttons Styling --- */
         .buttons {
             display: flex;
             justify-content: center;
-            gap: 30px; /* Space between buttons */
+            gap: 30px;
             position: relative;
             min-height: 100px;
             align-items: flex-start;
@@ -53,7 +51,6 @@
             border-radius: 50px;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            /* Smooth transition for movement */
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -63,61 +60,44 @@
             box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
         }
 
-        /* Soft Coral/Pink color for 'No' button */
         #noBtn {
             background-color: #ff85a1;
             color: white;
             white-space: nowrap;
-            z-index: 20; /* Ensure it floats on top when moving */
+            z-index: 20;
         }
 
-        /* --- Success Message & Photo --- */
-        .hidden {
-            display: none;
-        }
+        .hidden { display: none; }
 
-        #successMessage {
-            /* Fade in effect for the final message */
-            animation: fadeIn 1s ease-in;
-        }
+        #successMessage { animation: fadeIn 1s ease-in; }
 
-        /* Style for the stack photo look */
         .couple-photo {
             width: 80%;
             max-width: 350px;
             height: auto;
             border: 8px solid #fff;
-            border-bottom: 25px solid #fff; /* Polaroid style bottom */
+            border-bottom: 25px solid #fff;
             border-radius: 5px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            transform: rotate(-3deg); /* Slight tilt */
+            transform: rotate(-3deg);
             margin-bottom: 20px;
         }
 
-        #successMessage h1 {
-            font-size: 3.5rem;
-            color: #ff0054;
-            margin-bottom: 10px;
-        }
-
-        #successMessage p {
-            font-size: 1.5rem;
-            color: #590d22;
-        }
+        #successMessage h1 { font-size: 3.5rem; color: #ff0054; margin-bottom: 10px; }
+        #successMessage p { font-size: 1.5rem; color: #590d22; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Floating Hearts Background CSS --- */
         .heart-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* Ensures clicks go through to buttons */
+            pointer-events: none;
             z-index: 1;
         }
 
@@ -125,14 +105,13 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background: rgba(255, 105, 180, 0.4); /* Semi-transparent pink */
+            background: rgba(255, 105, 180, 0.4);
             transform: rotate(45deg);
             animation: float 15s infinite linear;
             bottom: -10vh;
-            filter: blur(2px); /* Slight blur effect */
+            filter: blur(2px);
         }
 
-        /* Creating the heart shape using pseudo-elements */
         .heart::before, .heart::after {
             content: '';
             position: absolute;
@@ -144,7 +123,6 @@
         .heart::before { left: -10px; }
         .heart::after { top: -10px; }
 
-        /* Animation Keyframes for floating upwards */
         @keyframes float {
             0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 0; }
             20% { opacity: 0.8; }
@@ -164,7 +142,7 @@
 
     <div id="container">
         <div id="askSection">
-            <h1>Will you be my valentine, BooBoo?</h1>
+            <h1>Will you be my valentine?</h1>
             <div class="buttons">
                 <button id="yesBtn">Yes</button>
                 <button id="noBtn">No</button>
@@ -172,7 +150,7 @@
         </div>
 
         <div id="successMessage" class="hidden">
-            <img src="https://i.pinimg.com/474x/d4/4e/42/d44e4235abb0050c3c76e727a7bf6401.jpg" alt="" class="couple-photo">
+            <img src="https://i.pinimg.com/474x/d4/4e/42/d44e4235abb0050c3c76e727a7bf6401.jpg" alt="Us together" class="couple-photo">
             <h1>I knew you'd say yes! ❤️</h1>
             <p>You made me the happiest person alive!</p>
         </div>
@@ -184,28 +162,35 @@
         const askSection = document.getElementById('askSection');
         const successMessage = document.getElementById('successMessage');
 
-        // Expanded list of phrases with emojis
+        
         const phrases = [
-            "Wait, what? 🤨",
-            "Are you absolutely sure? 🥺",
+            // English
+            "404: Dil says yes 💔",
+            "Wrong choice, right person 😏",
+            "Love.exe crashed 💥❤️",
+            "Dil already booked ❤️",
             "Love is a trap you want to be in! 🕸️❤️",
-            "Think of the puppies! 🐶",
-            "Heartbreak loading... 💔",
+            "Reconsider, Valentine pending 🧠",
+            "Nice try",
             "Maybe a tiny 'Yes'? 👉👈",
-            "Don't do this to me! 😭",
-            "I'll buy you chocolate! 🍫",
-            "Click the other one! 🔴",
-            "Error 404: 'No' not found 🚫",
-            "But we're a perfect match! 🧩",
-            "You're breaking my heart! 🔨💔",
-            "Is that your final answer? 🧐",
-            "I'm not giving up! 🏃‍♂️💨"
+
+            // Hindi (Romanized)
+            "Dil se fir ek baar puch ke dekho 💘",
+            "Ek baar ha bol de 😌",
+            "MAANI JAAANE😤",
+            "Heartbreak loading... 💔",
+            "Yeh dukh kaahe khatam nahi hota",
+            "Pyaar ki power samajh",
+            "Prem ma logic nathi",
+
+            // Gujarati (Romanized)
+            "Ek vaar ha bol ne 😏",
+           "Tane aatlo gamu to chu 💖"
         ];
 
         let phraseIndex = 0;
 
         noBtn.addEventListener('click', () => {
-            // First click setup to avoid jumping
             if (noBtn.style.position !== 'fixed') {
                 const rect = noBtn.getBoundingClientRect();
                 noBtn.style.left = rect.left + 'px';
@@ -214,16 +199,21 @@
                 noBtn.style.margin = '0';
             }
 
-            // Small delay for smooth transition
             setTimeout(() => {
-                // Change text
                 noBtn.innerText = phrases[phraseIndex];
                 phraseIndex = (phraseIndex + 1) % phrases.length;
 
-                // Move to a new random position within visible bounds
-                const padding = 100;
-                const x = Math.random() * (window.innerWidth - padding * 2) + padding;
-                const y = Math.random() * (window.innerHeight - padding * 2) + padding;
+                // Calculate constraints based on button size
+                const btnWidth = noBtn.offsetWidth;
+                const btnHeight = noBtn.offsetHeight;
+                
+                // Keep the button at least 20px away from the edge
+                const margin = 20;
+                const maxX = window.innerWidth - btnWidth - margin;
+                const maxY = window.innerHeight - btnHeight - margin;
+
+                const x = Math.max(margin, Math.random() * maxX);
+                const y = Math.max(margin, Math.random() * maxY);
                 
                 noBtn.style.left = x + 'px';
                 noBtn.style.top = y + 'px';
@@ -231,31 +221,24 @@
         });
 
         yesBtn.addEventListener('click', () => {
-            // 1. Hide the question section immediately
             askSection.classList.add('hidden');
             
-            // 2. Start Fireworks for 3 seconds
-            const duration = 3 * 1000; // 3 seconds
+            const duration = 3 * 1000;
             const animationEnd = Date.now() + duration;
             const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 100 };
 
             const interval = setInterval(function() {
               const timeLeft = animationEnd - Date.now();
-
-              if (timeLeft <= 0) {
-                return clearInterval(interval);
-              }
+              if (timeLeft <= 0) return clearInterval(interval);
 
               const particleCount = 50 * (timeLeft / duration);
-              // Launch from both sides
               confetti(Object.assign({}, defaults, { particleCount, origin: { x: Math.random() * 0.4, y: Math.random() - 0.2 } }));
               confetti(Object.assign({}, defaults, { particleCount, origin: { x: Math.random() * 0.4 + 0.6, y: Math.random() - 0.2 } }));
             }, 250);
 
-            // 3. Show the success message and photo AFTER the fireworks finish
             setTimeout(() => {
-                clearInterval(interval); // Ensure fireworks stop
-                confetti.reset(); // Clear any lingering confetti
+                clearInterval(interval);
+                confetti.reset();
                 successMessage.classList.remove('hidden');
             }, duration);
         });
